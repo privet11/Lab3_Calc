@@ -13,13 +13,20 @@ namespace Calculator
 {
     public partial class CalcUI : Form
     {
+        string[] args;
         static int alarmCounter = 0;
         static bool timerStart = false;
 
         private double tempNumber = 0;
-        public CalcUI()
+        public CalcUI(string[] args)
         {
+            this.args = args;
             InitializeComponent();
+            if (args.Length > 0)
+            {
+                string expression = args[0];
+                Console.WriteLine(AnalyzerClass.Estimate(expression));
+            }
         }
 
         private void buttonLeftParenthesis_Click(object sender, EventArgs e)
